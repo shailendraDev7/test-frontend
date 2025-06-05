@@ -31,6 +31,6 @@
 #    Both client.com/api/... and client.com/admin/api/... will be handled by this.
 [[redirects]]
   from = "/api/*"
-  to = "https://projekdir-backend.onrender.com/:splat" # <<< REPLACE THIS with your actual backend's full URL
+  to = "https://projekdir-backend.onrender.com/" # <<< REPLACE THIS with your actual backend's full URL
   status = 200 # Use 200 for a proxy (the browser URL will stay /api/...)
   # force = true # Sometimes useful to ensure proxy happens before other redirects
