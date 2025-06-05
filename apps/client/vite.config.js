@@ -3,8 +3,6 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "VITE_");
-  // IMPORTANT: For local development, VITE_API_URL should point to your local backend.
-  // This is read from .env.development.
   const API_TARGET = env.VITE_API_URL || "http://localhost:8000";
 
   return {
