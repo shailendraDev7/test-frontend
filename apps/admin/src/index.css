@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+li,
+a {
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+}
+
+p{
+  font-size: 1.3rem;
+  text-align: justify;
+}
+
+a {
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 0 10px;
+}
+
+a:hover{
+  color: orange;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+
+/* Theme */
+:root {
+  --main-color: #fac553;
+  --supporting-color: #fbf4e5;
+  --font-color: #fac553;
+  --primary-bg-color: #121b25;
+  --secondary-bg-color: #fff;
+  background: var(--primary-bg-color);
+}
+
+/* Layout */

@@ -1,0 +1,36 @@
+# your-frontend-repo/netlify.toml
+
+[build]
+  # Netlify will run the build command from the root of this repository.
+  command = "npm install && npm run build:all" # Or "yarn install && yarn run build:all" if you use yarn
+  # The directory containing the combined build output ready for deployment.
+  publish = "dist"
+
+# --- Redirects / Rewrites ---
+
+# 1. Main Client App SPA Fallback:
+#    If a request doesn't match a static file, serve index.html from the root.
+#    This handles client-side routing for paths like /about, /dashboard for the client app.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  # force = true # Uncomment if you find issues with conflicting static files
+
+# 2. Admin App SPA Fallback:
+#    If a request to /admin/* doesn't match a static file, serve index.html from the admin subdirectory.
+#    This handles client-side routing for paths like /admin/users, /admin/settings for the admin app.
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html" # Note: points to the admin app's index.html inside the 'admin' subdirectory
+  status = 200
+  # force = true # Uncomment if you find issues with conflicting static files
+
+# 3. API Proxy to your *separately deployed* backend server:
+#    This rule will proxy all requests starting with /api/ to your actual backend.
+#    Both client.com/api/... and client.com/admin/api/... will be handled by this.
+[[redirects]]
+  from = "/api/*"
+  to = "https://projekdir-backend.onrender.com/:splat" # <<< REPLACE THIS with your actual backend's full URL
+  status = 200 # Use 200 for a proxy (the browser URL will stay /api/...)
+  # force = true # Sometimes useful to ensure proxy happens before other redirects

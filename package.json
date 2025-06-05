@@ -1,0 +1,23 @@
+{
+  "name": "projekdir-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && (cd frontend/apps/client && npm install) && (cd frontend/apps/admin && npm install)",
+    "build:client": "cd frontend/apps/client && npm run build",
+    "build:admin": "cd frontend/apps/admin && npm run build",
+    "build:all": "npm run clean:dist && npm run build:client && npm run build:admin && npm run copy:admin-to-dist",
+    "clean:dist": "rimraf dist || true", 
+    "copy:admin-to-dist": "cp -r frontend/apps/admin/dist dist/admin",
+
+    "dev:client": "cd apps/client && npm run dev",
+    "dev:admin": "cd apps/admin && npm run dev",
+
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:admin\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "rimraf": "^5.0.0" 
+  }
+}
