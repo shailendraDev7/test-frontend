@@ -1,7 +1,7 @@
 import { useState } from "react";
 import logo from "../../assets/images/logos/projekdir-logo.png";
 import Nav from "./nav/Nav";
-import CredSection from "../CredSection";
+import CredSection from "./nav/CredSection";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

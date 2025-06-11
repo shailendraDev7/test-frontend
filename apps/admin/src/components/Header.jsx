@@ -2,6 +2,7 @@ import { Avatar, ClickAwayListener } from "@mui/material";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 import { IoSettings } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,14 +18,14 @@ const Header = () => {
         <div className="flex items-center justify-end">
           {/* Logo Section */}
           <div className="flex-shrink-0 ml-0">
-            <a href="/" className="flex items-center" aria-label="Home">
+            <Link to="/" className="flex items-center" aria-label="Home">
               <img
                 src={logo} // Using imported logo for better build optimization
                 alt="Company Logo"
                 className="w-1/3 ms-12"
                 loading="lazy" // Lazy loading for better performance
               />
-            </a>
+            </Link>
           </div>
 
 
@@ -52,56 +53,56 @@ const Header = () => {
                   >
                     <div className="py-1" role="none">
                       {/* <!-- Active: "bg-gray-100 text-gray-900 outline-hidden", Not Active: "text-gray-700" --> */}
-                      <a
-                        href="#"
+                      <Link
+                        to="#"
                         className="block px-4 py-2 text-[13px] text-gray-300"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-0"
                       >
                         My Account
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="#"
                         className="block px-4 py-2 text-[13px] text-gray-300"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-1"
                       >
                         Roles
-                      </a>
+                      </Link>
                     </div>
                     <div className="py-1" role="none">
-                      <a
-                        href="#"
+                      <Link
+                        to="#"
                         className="block px-4 py-2 text-[13px] text-gray-300"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-2"
                       >
                         Users
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="#"
                         className="block px-4 py-2 text-[13px] text-gray-300"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-3"
                       >
                         Data Analysis
-                      </a>
+                      </Link>
                     </div>
 
                     <div className="py-1" role="none">
-                      <a
-                        href="#"
+                      <Link
+                        to="/login"
                         className="block px-4 py-2 text-[13px] text-gray-300"
                         role="menuitem"
                         tabindex="-1"
                         id="menu-item-6"
                       >
                         Logout
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 )}

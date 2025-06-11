@@ -60,7 +60,7 @@ const AddProject = () => {
         autoClose: 3000,
       });
 
-      navigate("/admin");
+      navigate("/");
     } catch (error) {
       toast.error(error.message || "Failed to add project", {
         position: "top-right",

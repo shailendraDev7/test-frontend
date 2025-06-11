@@ -3,26 +3,15 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "VITE_");
-  // IMPORTANT: For local development, VITE_API_URL should point to your local backend.
-  // This is read from .env.development.
   const API_TARGET = env.VITE_API_URL || "http://localhost:8000";
+  const ADMIN_PORT = env.VITE_ADMIN_PORT || 5174;
 
   return {
     plugins: [react()],
-    // ... other build configurations ...
+    base: "/admin/",
     server: {
-      port: 5173, // Admin app's local dev port
-      proxy: {
-        // This proxies requests from http://localhost:5173/api/... to your local backend http://localhost:8000/...
-        "/api": {
-          target: API_TARGET,
-          changeOrigin: true, // Needed for virtual hosts / different origins
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
-    },
-    css: {
-      postcss: "./postcss.config.cjs",
+      port: parseInt(ADMIN_PORT, 10), // Ensure port is a number
+      historyApiFallback: true,
     },
     build: {
       outDir: "dist",

@@ -6,7 +6,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 const CredSection = () => {
   return (
     <div className="flex items-center me-1">
-      <Link to="/login">
+      <Link to="/admin/login">
         <Button
           variant="outlined"
           startIcon={<LoginIcon />}
@@ -26,7 +26,7 @@ const CredSection = () => {
           Login
         </Button>
       </Link>
-      <Link to="/signup">
+      <Link to="/admin/signup">
         <Button
           variant="outlined"
           startIcon={<PersonAddIcon />}

@@ -5,7 +5,13 @@ export default {
     extend: {
       fontFamily: {
         cursive: ["Dancing Script", "cursive"],
-        sharetech:[ "Share Tech", "sans-serif"],
+        sharetech: ["Share Tech", "sans-serif"],
+      },
+      palette: {
+        primary: {
+          main: "#ffa726",
+        },
+        secondary: "#212121",
       },
       boxShadow: {
         "white-sm":
@@ -50,12 +56,12 @@ export default {
               'url("https://images.pexels.com/photos/1311445/pexels-photo-1311445.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
           },
         },
-        fall:{
+        fall: {
           "0%": {
-            transform:'translateY(-100%)',
+            transform: "translateY(-100%)",
           },
           "100%": {
-            transform:'translateY(100%)',
+            transform: "translateY(100%)",
           },
         },
       },

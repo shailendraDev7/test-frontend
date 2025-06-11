@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { MyContext } from "../../../../client/src/App";
 import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { FaUserCircle, FaGoogle, FaGithub } from "react-icons/fa";
@@ -10,6 +9,7 @@ import pattern from "../../assets/pattern.jpeg";
 import { RiLockPasswordFill } from "react-icons/ri";
 import api from "../../services/api";
 import toast from "react-hot-toast";
+import { AppContext } from "../../context/AppContext";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -24,14 +24,14 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const context = useContext(MyContext);
+  const {setisHideHeaderAndFooter} = useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    context.setisHideHeaderAndFooter(true);
+    setisHideHeaderAndFooter(true);
     window.scrollTo(0, 0);
-    return () => context.setisHideHeaderAndFooter(false);
-  }, [context]);
+    return () => setisHideHeaderAndFooter(false);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -103,7 +103,7 @@ const SignUp = () => {
                   alt="SCMS Logo"
                   className="mx-auto h-20 w-auto mb-6"
                 />
-                <h2 className="text-2xl font-bold text-white">
+                <h2 className="text-2xl font-bold text-gray-200 uppercase">
                   Create Account
                 </h2>
               </div>
@@ -240,22 +240,22 @@ const SignUp = () => {
                 {/* Phone Field */}
                 <div
                   className={`relative rounded-lg transition-all ${
-                    inputIndex === 0 ? "ring-2 ring-orange-500" : ""
+                    inputIndex === 4 ? "ring-2 ring-orange-500" : ""
                   }`}
                 >
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <FaUserCircle
                       className={`h-5 w-5 text-gray-200 ${
-                        inputIndex === 0 ? "text-orange-400" : ""
+                        inputIndex === 4 ? "text-orange-400" : ""
                       }`}
                     />
                   </div>
                   <input
                     type="number"
                     name="phone"
-                    value={formData.name}
+                    value={formData.phone}
                     onChange={handleChange}
-                    onFocus={() => setInputIndex(0)}
+                    onFocus={() => setInputIndex(4)}
                     onBlur={() => setInputIndex(null)}
                     className="w-full pl-10 pr-3 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none"
                     placeholder="Enter your phone"

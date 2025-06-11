@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { MyContext } from "../../../../client/src/App";
 import { Link, useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -9,6 +8,7 @@ import { toast } from "react-hot-toast";
 import logo from "../../assets/logo.png";
 import pattern from "../../assets/pattern.jpeg";
 import api from "../../services/api";
+import { AppContext } from "../../context/AppContext";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -18,13 +18,14 @@ const Login = () => {
   const [inputIndex, setInputIndex] = useState(null);
   const [isShowPassword, setIsShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const context = useContext(MyContext);
+  const { isHideHeaderAndFooter, setisHideHeaderAndFooter } =
+    useContext(AppContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    context.setisHideHeaderAndFooter(true);
-    return () => context.setisHideHeaderAndFooter(false);
-  }, [context]);
+    setisHideHeaderAndFooter(true);
+    return () => setisHideHeaderAndFooter(false);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +67,7 @@ const Login = () => {
         />
 
         {/* Login Container */}
-        <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
+        <div className="relative flex items-center min-h-screen">
           <div className="w-full max-w-lg bg-gray-800 rounded-xl shadow-lg overflow-hidden">
             {/* Logo Header */}
             <Link to="/" className="mx-auto flex justify-center my-6">
@@ -212,8 +213,12 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
-          <img src={logo} alt="SCMS Logo" className="relative h-20 w-auto" />
+        {/* Powered by */}
+        <div className="flex px-6 justify-end w-1/3">
+            <span className="text-3xl text-gray-500 font-semibold tracking-wide mr-3 mt-3 underline">
+              Powered by
+            </span>
+          <img src={logo} alt="SCMS Logo" className="h-16 ml-0" />
         </div>
       </div>
     </>

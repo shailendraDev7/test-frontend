@@ -1,5 +1,5 @@
 {
-  "name": "your-frontend-monorepo",
+  "name": "projekdir-frontend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
     "dev:client": "cd apps/client && npm run dev",
     "dev:admin": "cd apps/admin && npm run dev",
 
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:dev_admin\"",
-    "start": "npm run dev",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:admin\"",
+    "start": "npm run dev",    
     "preview:local": "npm run build:all && vite preview",
     "preview:only":"vite preview"
   },
